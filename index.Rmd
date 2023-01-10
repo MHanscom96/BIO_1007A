@@ -13,4 +13,4 @@ output:
 
 [Assignment 1](Assignment_1.html)
 
-[GroupMe](https://web.groupme.com/chats)
+[Assignment 2](Assignment_2.html)

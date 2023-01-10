@@ -1,0 +1,75 @@
+---
+title: "Assignment 2"
+author: "Max Hanscom"
+date: "2023-01-10"
+output: html_document
+---
+
+**1.**
+
+![Cat pic lol](https://cdn.britannica.com/39/7139-050-A88818BB/Himalayan-chocolate-point.jpg) 
+
+**2.** 
+
+First Header  | Second Header | Third Header
+------------- | ------------- | -------------
+Content Cell  | Content Cell  | Content Cell
+Content Cell  | Content Cell  | Content Cell
+Content Cell  | Content Cell  | Content Cell
+Content Cell  | Content Cell  | Content Cell
+
+**3.**
+
+Hi my name is **Max Hanscom** and I *really* like to play frisbee.
+
+**4.**
+
+* 1 tablespoon olive oil 
+* ½ medium onion, chopped 
+* 2 bay leaves 
+** 1 teaspoon ground cumin 
+* 2 tablespoons dried oregano 
+* 1 tablespoon salt 
+* 2 stalks celery, chopped 
+* 2 green bell peppers, chopped 
+* 2 jalapeno peppers, chopped 
+* 3 cloves garlic, chopped 
+* 2 (4 ounce) cans chopped green chile peppers, drained 
+* 2 (12 ounce) packages vegetarian burger crumbles 
+* 3 (28 ounce) cans whole peeled tomatoes, crushed 
+* ¼ cup chili powder 
+* 1 tablespoon ground black pepper 
+* 1 (15 ounce) can kidney beans, drained 
+* 1 (15 ounce) can garbanzo beans, drained 
+* 1 (15 ounce) can black beans 
+* 1 (15 ounce) can whole kernel corn
+
+**5.**
+
+1. Don't pick up the phone
+2. Don't let him in
+3. Don't be his friend
+
+**6.**
+
+[Roll Pink](https://ultiworld.com/2022/01/25/universe-point-presented-by-up-cleats-middlebury-vs-st-olaf/)
+
+**7.**
+
+### Big
+## Bigger
+# Biggest
+
+**8.**
+
+superscript: e = mc^2^  
+subscript: CO~2~
+
+**9.**
+
+$$y = mx + b$$
+
+**10.**
+
+`Plain text i guess`
+
