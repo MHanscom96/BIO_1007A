@@ -1,0 +1,47 @@
+---
+title: "Assignment 1"
+author: "Max Hanscom"
+date: "2023-01-10"
+output: html_document
+---
+
+# Notes 1/10
+
+* Git and GitHub  
+	+ version control: keeping and restoring past versions of files  
+	+ initially for programmers collaborating  
+	+ Files good for version control  
+		-Plain text (.txt)  
+		-R scripts (.R)  
+		-Markdown- formatting plain text (.md / .rmd)  
+		-html  
+	+ Files bad for verion control  
+		-pdf  
+		-videos  
+		-jpeg  
+		-word docs  
+	+ Git  
+		-local.  On individual computer only  
+		-git status  
+		-git add -A  
+		-git commit -am “message”  
+		-git push  
+	+ GitHub  
+		-Free remote website for public storage of projects  
+		-GitHub Repo  
+			-Clone = downloading a copy onto local computer  
+			-Changes to files  
+				-adding new  
+				-alter existing  
+				-delete existing  
+			-Commit (noun) = snapshot of current file system  
+			-Commit (verb) = saving and recording changes in local repository  
+* Important to keep track of changes and versions to go back and restore and edit them	  
+* Push = moving changes on local computer to GitHub  
+* Pull = moving from GitHub repo to local computer  
+	+ R Project   
+		-divides work into multiple context  
+			-working directory  
+			-workspace  
+			-history  
+			-scans documents  

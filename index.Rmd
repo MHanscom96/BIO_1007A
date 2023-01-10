@@ -1,0 +1,16 @@
+---
+title: "BIO_1007A Web Page"
+author: "Max Hanscom"
+date: "2023-01-10"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+
+## Assignments
+
+[Assignment 1](Assignment_1.html)
+
+[GroupMe](https://web.groupme.com/chats)
