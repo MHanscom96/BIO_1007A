@@ -1,0 +1,61 @@
+---
+title: "Assignment 3"
+author: "Max Hanscom"
+date: "2023-01-12"
+output: html_document
+---
+
+**1.** 
+
+```{r}
+
+x <- 1.1
+a <- 2.2
+b <- 3.3
+
+z <- x^(a^b)
+print(z)
+
+z <- (x^a)^b
+print(z)
+
+z <- 3*(x^3) + 2*(x^2) + 1
+print(z)
+
+```
+
+**2.** 
+```{r}
+
+a <- c(rep(x = 1: 8), rep(x = 7: 1))
+print(a)
+
+b.1 <- rep(x = 1:5)
+b <- rep(x = 1: 5, times = b.1)
+print(b)
+
+c.1 <- rep(x = 1:5)
+c <- rep(x = 5: 1, times = c.1)
+print(c)
+
+```
+
+**3.**
+```{r}
+
+queue <- c("sheep", "fox", "owl", "ant")
+print(queue)
+queue <- c(queue, "serpent")
+print(queue)
+queue <- queue[2:5]
+print(queue)
+queue <- c("donkey", queue)
+print(queue)
+queue <- queue[1:4]
+print(queue)
+queue <- c(queue[1:3], "aphid", queue[4])
+print(queue)
+which(queue == "aphid")
+
+```
+
