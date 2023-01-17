@@ -21,3 +21,10 @@ output:
 
 [Assignment 1](https://lvash.github.io/BIOL1007A/Weekly-Assignment-1.html)
 
+## Lecture Notes
+
+[Day 1](Assignment_1.html)
+
+[Day 2](https://atakoudes.github.io/BIOL1007A/Coding_with_R.html)
+
+[Day 3]()
