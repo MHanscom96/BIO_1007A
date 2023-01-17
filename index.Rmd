@@ -17,6 +17,8 @@ output:
 
 [Assignment 3](Assignment_3.html)
 
+[Assignment 4](Assignment_4.html)
+
 ## Weekly Assignments
 
 [Assignment 1](https://lvash.github.io/BIOL1007A/Weekly-Assignment-1.html)

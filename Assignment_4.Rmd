@@ -1,0 +1,38 @@
+---
+title: "Assignment 4"
+author: "Max Hanscom"
+date: "2023-01-17"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+**1.**
+```{r}
+n_dims <- floor(runif(n = 1, min = 3, max = 10))
+
+vector <- c(1:(n_dims)^2)
+
+vector <- sample(x = vector)
+
+matrix <- matrix(data = vector, nrow = sqrt(length(vector)))
+
+print(matrix)
+
+transpose <- t(matrix)
+
+print(transpose) #t() gives the transpose
+
+sum(matrix[1,])
+mean(matrix[1,])
+
+sum(matrix[sqrt(length(vector)),])
+mean(matrix[sqrt(length(vector)),])
+```
+**2.**
+
+```{r}
+
+```
+
