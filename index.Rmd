@@ -27,4 +27,4 @@ output:
 
 [Day 2](https://atakoudes.github.io/BIOL1007A/Coding_with_R.html)
 
-[Day 3]()
+[Day 3](Day_3_notes.html)

@@ -382,15 +382,15 @@ typeof(d)</code></pre>
 <pre class="r"><code>### comparison operators yeild a logical result
 a &lt;- runif(10)
 print(a)</code></pre>
-<pre><code>##  [1] 0.4283012 0.5901921 0.8749163 0.2287378 0.6603215 0.7201192 0.2243591
-##  [8] 0.6312999 0.8486039 0.9812242</code></pre>
+<pre><code>##  [1] 0.9150661 0.0630397 0.6973097 0.5319889 0.3868276 0.3316793 0.2781463
+##  [8] 0.2767541 0.4858595 0.3039856</code></pre>
 <pre class="r"><code>a &gt; 0.5 # conditional statement</code></pre>
-<pre><code>##  [1] FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
+<pre><code>##  [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <pre class="r"><code>### how many elements in the vector are &gt; 0.5
 sum(a &gt; 0.5)</code></pre>
-<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 3</code></pre>
 <pre class="r"><code>mean(a &gt; 0.5) # what proportion of vector are greater than 0.5</code></pre>
-<pre><code>## [1] 0.7</code></pre>
+<pre><code>## [1] 0.3</code></pre>
 <pre class="r"><code>#### Vectorization
 ## add a constant to a vector
 
@@ -419,7 +419,7 @@ z + x # once one vector ends, it restarts from the start</code></pre>
 #### Simulating data: runif and rnorm()
 
 runif(n = 5, min = 5, max = 10) # n is sample size, can adjust min and max</code></pre>
-<pre><code>## [1] 8.584329 6.969209 6.749589 9.294916 7.453369</code></pre>
+<pre><code>## [1] 8.222469 8.401799 5.651394 5.091051 5.454070</code></pre>
 <pre class="r"><code>set.seed(123) # specifies a specific randomness
 runif(n = 5, min = 5, max = 10) # think minecraft seed</code></pre>
 <pre><code>## [1] 6.437888 8.941526 7.044885 9.415087 9.702336</code></pre>
