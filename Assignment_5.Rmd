@@ -1,0 +1,54 @@
+---
+title: "Assignment_5"
+author: "Max Hanscom"
+date: "2023-01-19"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+**2.**
+
+```{r}
+my_matrix <- matrix(runif(1:16), nrow = 4)
+
+my_logical <- rnorm(1:100) > 0
+
+my_letters <- sample(letters)
+
+my_list <- list(my_matrix, my_logical, my_letters)
+
+my_new_list <- list(my_matrix[2,2], my_logical[2], my_letters[2])
+
+typeof(my_matrix[2,2])
+
+typeof(my_logical[2])
+
+typeof(my_letters[2])
+
+my_vector <- c(my_matrix[2,2], my_logical[2], my_letters[2])
+
+typeof(my_vector)
+
+```
+**3.**
+```{r}
+my_unifs <- runif(26, min = 0, max = 10)
+
+my_letters <- toupper(sample(letters))
+
+my_df <- data.frame(my_unifs, my_letters)
+
+my_df[sample(1:26, 4), 1] <- NA
+
+which(!complete.cases(my_df))
+
+my_df <- my_df[order(my_df$my_letters),]
+
+mean(my_df[,1], na.rm = TRUE)
+
+names(my_df)[names(my_df) == "my_letters"] <- "my_LETTERS"
+```
+
+

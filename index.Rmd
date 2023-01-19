@@ -19,9 +19,13 @@ output:
 
 [Assignment 4](Assignment_4.html)
 
+[Assignment 5](Assignment_5.html)
+
 ## Weekly Assignments
 
 [Assignment 1](https://lvash.github.io/BIOL1007A/Weekly-Assignment-1.html)
+
+[Assignment 2](https://lvash.github.io/BIOL1007A/Weekly-Assignment-2.html)
 
 ## Lecture Notes
 
@@ -30,3 +34,5 @@ output:
 [Day 2](https://atakoudes.github.io/BIOL1007A/Coding_with_R.html)
 
 [Day 3](Day_3_notes.html)
+
+[Day 4](Day_4_notes.html)

@@ -30,9 +30,4 @@ mean(matrix[1,])
 sum(matrix[sqrt(length(vector)),])
 mean(matrix[sqrt(length(vector)),])
 ```
-**2.**
-
-```{r}
-
-```
 
