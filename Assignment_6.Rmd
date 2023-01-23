@@ -1,0 +1,93 @@
+---
+title: "Assignment 6"
+author: "Max Hanscom"
+date: "2023-01-23"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+**1.**
+```{r}
+library(tidyverse)
+library(dplyr)
+str(iris)
+```
+There are 150 observations of 5 variables in the iris data set!
+
+**2.**
+```{r}
+
+iris1 <- filter(iris, Species %in% c("virginica", "versicolor") & Sepal.Length > 6 & Sepal.Width > 2.5)
+
+str(iris1)
+
+```
+There are 56 observations of 5 variables in the new data set!
+
+**3.**
+```{r}
+
+iris2 <- select(iris1, Species, Sepal.Length, Sepal.Width)
+
+str(iris2)
+```
+There are 56 observations of 5 variables in the new data set!
+
+**4.**
+```{r}
+
+iris3 <- arrange(iris2, by= desc(Sepal.Length))
+
+head(iris3)
+```
+
+**5.**
+```{r}
+
+iris4 <- mutate(iris3, Sepal.Area = Sepal.Length * Sepal.Width)
+
+str(iris4)
+```
+
+There are 56 observations of 4 variables in the new data set!
+
+**6.**
+```{r}
+IrisTab <- summarize(iris4, meanSepal.Length = mean(Sepal.Length), meanSepal.Width = mean(Sepal.Width), TotalNumber = n())
+
+print(IrisTab)
+
+```
+
+**7.**
+```{r}
+
+iris5 <- group_by(iris4, Species)
+
+iris5 <- summarize(iris5, meanSepal.Length = mean(Sepal.Length), meanSepal.Width = mean(Sepal.Width), TotalNumber = n())
+
+print(iris5)
+
+```
+
+**8.**
+```{r}
+IrisFinal <- iris %>%
+  filter(Species %in% c("virginica", "versicolor") & Sepal.Length > 6 & Sepal.Width > 2.5) %>%
+  select(Species, Sepal.Length, Sepal.Width) %>%
+  arrange(by= desc(Sepal.Length)) %>%
+  mutate(Sepal.Area = Sepal.Length * Sepal.Width) %>%
+  group_by(Species) %>%
+  summarize(meanSepal.Length = mean(Sepal.Length), meanSepal.Width = mean(Sepal.Width), TotalNumber = n())
+
+print(IrisFinal)
+```
+
+
+
+
+
+
+

@@ -1,0 +1,140 @@
+### Entering the tidyverse (dplyr)
+### 23 January 2023
+### MFH
+
+### tidyverse: collection of packages that share philosophy, grammar (or how the code is structured), and data structures
+
+## Operators: symbols that tell R to perform different operations (between variables, functions, etc.)
+
+## Arithmetic operators: + - * / ^ ~
+## Assignment operator: <-
+## Logical operators: ! & |
+## Relational operators: == != > < >= <=
+## Miscellaneous operators: %>% (forward pipe operator) %in%
+
+### only need to install packages once
+
+library(tidyverse) #library function to load in packages
+
+# dplyr: new(er) packages provides a set of tools for manipulating data sets
+# specifically written to be fast
+# individual functions that correspond to common operations
+
+#### The Core Verbs
+## filter()
+## arrange()
+## select()
+## group_by() and summarize()
+## mutate()
+
+## built in data set
+data(starwars)
+class(starwars)
+glimpse(starwars)
+
+## Tibble: modern take on data frames
+# great aspects of dfs and drops frustrating ones (change variables)
+
+
+### NAs
+anyNA(starwars) #is.na # complete.cases
+starwarsClean <- starwars[complete.cases(starwars[,1:10])]
+anyNA(starwarsClean[,1:10])
+
+### filter(): picks/subsets observations (ROWS) by their values
+
+filter(starwars, gender == "masculine" & height < 180 & height > 100)
+
+#### %in% operator (matching); similar == but you can compare vectors of different length
+#sequence of letters
+a <- LETTERS[1:10]
+length(a)
+
+b <- LETTERS[4:10]
+length(b)
+
+## output of %in% depends on first vector
+a %in% b
+b %in% a
+
+# use %in% to subset
+eyes <- filter(starwars, eye_color %in% c("blue", "brown"))
+View(eyes)
+
+#### arrange(): reorders rows
+arrange(starwars, by=height) #default is ascending order
+# can use helper function desc()
+arrange(starwars, by=desc(height))
+
+arrange(starwars, height, desc(mass)) # second variable used to break ties
+
+sw <- arrange(starwars, by=height)
+tail(sw) # missing values are at the end
+
+#### select(): chooses variables (COLUMNS) by their names
+select(starwars, 1:10)
+select(starwars, name:species)
+select(starwars, -(films:starships))
+starwars[,1:11]
+
+## Rearange columns
+select(starwars, name, gender, species, everything()) #everything is a helper function; useful if you have a couple of variables you want to move to the beginning
+
+# contains() helper function
+select(starwars, contains ("color"))
+# others include: ends_with(), starts_with(), num_range()
+
+## select can also rename columns
+select(starwars, haircolor = hair_color) # returns only renamed columns
+rename(starwars, haircolor = hair_color) # returns whole df
+
+#### mutate(): creates new variables using functions of existing variables
+# let's creare a new column that is height divided by mass
+mutate(starwars, ratio = height/mass)
+
+starwars_lbs <- mutate(starwars, mass_lbs = mass*2.2)
+starwars_lns <- select(starwars_lbs, 1:3, mass_lbs, everything())
+glimpse(starwars_lbs) # brought it to the front sing select
+
+# transmute
+transmute(starwars, mass_lbs = mass*2.2) # only returns mutated columns
+transmute(starwars, mass, mass_lbs= mass*2.2, height)
+
+#### group_by() and summarize()
+summarize(starwars, meanHeight = mean(height, na.rm=T)) #throws NA if any NAs are in df - need to use na.rm=T
+
+summarize(starwars, meanHeight = mean(height, na.rm=T), TotalNumber = n())
+
+# use group_by() for maximum usefulness
+starwarsGenders <- group_by(starwars, gender)
+head(starwarsGenders)
+
+summarize(starwarsGenders, meanHeight = mean(height, na.rm = TRUE), TotalNumber = n())
+
+# Piping %>%
+# used to emphasize a sequence of actions
+# allows you to pass an intermediate result onto the next function (uses output of one function as input of next function)
+# avoid if you need to manipulate more than one object/ variable at a time; or if variable is meaningful
+# formatting: should always have a space before the %>% followed by a new line
+
+starwars %>% 
+  group_by(gender) %>%
+  summarize(meanHeight=mean(height, na.rm = TRUE), TotalNumber=n())
+
+## case_when() is useful for multiple if/ifelse statements
+starwars %>%
+  mutate(sp = case_when(species == "Human" ~ "Human", TRUE ~ "Non-Human")) # uses condition, puts "Human" if True in sp column, puts "Non-Human" if it's FALSE
+
+
+
+
+
+
+
+
+
+
+
+
+
+

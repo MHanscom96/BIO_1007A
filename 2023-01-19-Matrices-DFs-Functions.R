@@ -52,16 +52,81 @@ str(dataSub)
 orderedIris <- iris[order(iris$Petal.Length),]
 head(orderedIris)
 
+######### FUNCTIONS in R!!!
+
+# everything in R is a function
+sum(3,2) #sum
+3 + 2 # + sign is a function
+
+### User-defined functions
+
+#functionName <- function(argX = defaultx, argY = defaultY){
+  ## curly bracket starts the body of the function
+  ### Lines of R code ### and notes
+  ### create local variables (only accessible within the function)
+  # argX <- c("IDK")
+  ### return(z)
+#}
+  
+  myFunc <- function(a=3, b=4){
+    z <- a + b
+    return(z)
+  }
+
+myFunc() # runs defaults
+
+z <-myFunc()
+
+myFunc(a = 100, b = 3.4) # can input any values for a and b
 
 
+#### Multiple return statements
 
+################################################################
+# FUNCTION: HardyWeinberg
+# input: all allele frequency p (0,1)
+# output: p and the frequencies of 3 genotypes AA AB BB
+#---------------------------------------------------------------
+HardyWeinberg <- function(p = runif(1)){
+  if(p > 1.0 | p < 0.0){
+    return("Function failure: p must be between 0 and 1")
+  }
+  q <- 1 - p
+  fAA <- p^2
+  fAB <- 2*p*q
+  fBB <- q^2
+  vecOut <- signif(c(p=p, AA = fAA, AB = fAB, BB = fBB), digits = 3)
+  return(vecOut)
+}
+###############################################################
 
+HardyWeinberg()
+freqs <- HardyWeinberg()
+freqs
+HardyWeinberg(p=3)
 
+### Create a complex default value
+##################################
+# FUNCTION: fitLinear2
+# fits simple regression line
+# input: numeric list (p) of predictor (x) and respons (y)
+# outputs: slope and p-value
 
+fitLinear2 <- function(p=NULL){
+  if(is.null(p)){
+    p <- list(x = runif(20), y = runif(20))
+  }
+  myMod <- lm(p$x~p$y)
+  myOut <- c(slope = summary(myMod)$coefficients[2,1],
+             pValue = summary(myMod)$coefficients[2,4])
+  plot(x=p$x, y=p$y) #quick plot to check output
+  return(myOut)
+}
 
+fitLinear2()
 
-
-
+myPars <- list(x=1:10, y=runif(10))
+fitLinear2(p=myPars)
 
 
 

@@ -21,6 +21,8 @@ output:
 
 [Assignment 5](Assignment_5.html)
 
+[Assignment 6](Assignment_6.html)
+
 ## Weekly Assignments
 
 [Assignment 1](https://lvash.github.io/BIOL1007A/Weekly-Assignment-1.html)
@@ -36,3 +38,5 @@ output:
 [Day 3](Day_3_notes.html)
 
 [Day 4](Day_4_notes.html)
+
+[Day 5](Day_5_notes.html)
