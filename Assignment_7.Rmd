@@ -1,0 +1,74 @@
+---
+title: "Assignment 7"
+author: "Max Hanscom"
+date: "2023-01-24"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+library(viridis)
+```
+
+
+**1.**
+```{r}
+starwarsSpecies <- starwars %>% 
+  group_by(species) %>% 
+  summarize(number = n()) %>% 
+  filter(number > 1)
+
+starwarsNew <- starwars %>% 
+  filter(species %in% starwarsSpecies$species) %>% 
+  select(-(films:vehicles:starships))
+```
+
+**2.**
+```{r}
+
+starwarsNew <- starwarsNew %>% 
+  filter(complete.cases(starwarsNew$height))
+
+heightSummary <- starwarsNew %>%
+  group_by(species) %>%
+  summarize(mean_height = mean(height), median_height = median(height), sd_height = sd(height))
+
+print(heightSummary)
+```
+
+**3.**
+```{r}
+
+cols <- viridis(8, option = "magma")
+graph<- ggplot(data=starwarsNew, aes(x=species, y=height, fill=species)) + 
+  geom_boxplot() +
+  scale_fill_manual(values=cols) + 
+  xlab("Species") + 
+  ylab("Height (cm)")
+
+graph + theme_linedraw() + geom_text(x=8.5, y=230, label="p = 1.2 E - 0.5")
+
+```
+
+**4.**
+```{r}
+graph2 <- ggplot(mpg, aes(fill=class, y=cty, x=class)) + 
+  geom_bar(position="dodge", stat="identity") + 
+  xlab("Vehicle Class") + 
+  ylab("City mpg")
+
+graph2 + theme_linedraw()
+```
+
+**5.**
+```{r}
+graph / graph2
+```
+
