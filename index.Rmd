@@ -8,6 +8,11 @@ output:
     highlight: github
 ---
 
+![Head Image](mgp2021.jpg) 
+
+## About Me
+
+Hi! My name is Max and this is my website for my J-term class *Reproducible Biology in R*.  I'm a senior thesis student in the Geology department at Middlebury College currently working on my thesis project focused on Appalachian Mountain Building around 450 million years ago.  In my free time I like to ski and I play on the college's frisbee team; the Middlebury Pranksters.  Check out my projects for this class below!
 
 ## Daily Assignments
 
@@ -25,11 +30,15 @@ output:
 
 [Assignment 7](Assignment_7.html)
 
+[Assignment 8](Assignment_8.html)
+
 ## Weekly Assignments
 
 [Assignment 1](https://lvash.github.io/BIOL1007A/Weekly-Assignment-1.html)
 
-[Assignment 2](https://lvash.github.io/BIOL1007A/Weekly-Assignment-2.html)
+[Assignment 2](Weekly_2.html)
+
+[Assignment 3](Weekly_3.html)
 
 ## Lecture Notes
 
@@ -44,3 +53,6 @@ output:
 [Day 5](Day_5_notes.html)
 
 [Day 6](Day_6_notes.html)
+
+[Day 7](Day_7_notes.html)
+

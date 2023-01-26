@@ -1,0 +1,68 @@
+---
+title: "Assignment 8"
+author: "Max Hanscom"
+date: "2023-01-26"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+```{r message=FALSE}
+
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+library(viridis)
+
+```
+
+
+**1.  Code Reflection**
+
+The only difference I could find between my code and the posted code was in Assignment 6, when using the group_by function before summarize, the solutions use a period as an temporary variable, whereas I just repeated the iris5 variable and override it with the summarize function. I also did not re-order the functions while piping in the final problem.
+
+**2.  Code Annotation**
+
+```{r}
+
+
+## read.table()
+dryadData <- read.table(file="Data/veysey-data.csv", header=TRUE, sep=",")
+#glimpse(dryadData)
+head(dryadData)
+
+table(dryadData$species) ### allows you to see different groups of character column
+summary(dryadData$mean.hydro) # quick data summary
+
+### Copied in stuff
+
+dryadData$species<-factor(dryadData$species, labels=c("Spotted Salamander", "Wood Frog")) #creating 'labels' to use for the plot
+
+class(dryadData$treatment)
+
+dryadData$treatment <- factor(dryadData$treatment, 
+                              levels=c("Reference",
+                                       "100m", "30m"))
+
+
+p<- ggplot(data=dryadData,  # creates plot and assigns to variable
+           aes(x=interaction(wetland, treatment),  #group treatment and wetland
+               y=count.total.adults, fill=factor(year))) + geom_bar(position="dodge", stat="identity", color="black") + # inputs data on y axis (number of breeding adults)
+  ylab("Number of breeding adults") + # prints a title for y axis
+  xlab("") + # specifies that there is no title for x axis
+  scale_y_continuous(breaks = c(0,100,200,300,400,500)) + ## y axis should be broken up by 100s
+  scale_x_discrete(labels=c("30 (Ref)", "124 (Ref)", "141 (Ref)", "25 (100m)","39 (100m)","55 (100m)","129 (100m)", "7 (30m)","19 (30m)","20 (30m)","59 (30m)")) + # labels points on x axis
+  facet_wrap(~species, nrow=2, strip.position="right") + # splits into two graphs instead of one split bar chart
+  theme_few() + scale_fill_grey() + # gives it the greyscale theme
+  theme(panel.background = element_rect(fill = 'gray94', color = 'black'), legend.position="top",  legend.title= element_blank(), axis.title.y = element_text(size=12, face="bold", colour = "black"), strip.text.y = element_text(size = 10, face="bold", colour = "black")) + # sets colors, formats text size and font
+  guides(fill=guide_legend(nrow=1,byrow=TRUE)) # matches legend to data
+
+p # prints the graph
+
+
+```
+
+

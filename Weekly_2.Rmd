@@ -1,0 +1,47 @@
+---
+title: "Weekly Assignment 2"
+author: "Max Hanscom"
+date: "2023-01-26"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+**1.**
+```{r}
+set.seed(111)
+simulation <- function(mean1=10, sd1=1.5, mean2=45, sd2=2, n=25){
+  
+  Type <- rep(c("Control", "Treatment"), each = n)
+  Value <- c(rnorm(n, mean = mean1, sd = sd1), rnorm(n, mean = mean2, sd = sd2))
+  dframe <- data.frame(Type, Value)
+  return(dframe)
+}
+```
+
+**2.**
+```{r}
+
+data<-simulation()
+
+head(data)
+
+```
+
+**3.**
+```{r}
+
+myPval <- function(df=NULL){
+  
+  test <- aov(Value ~ Type, data=df)
+  testSummary <- summary(test)
+  p_value <- testSummary[[1]][["Pr(>F)"]][1]
+  return(p_value)
+}
+
+myPval(df=data)
+
+myPval(simulation())
+```
+
+
