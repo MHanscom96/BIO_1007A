@@ -32,6 +32,8 @@ Hi! My name is Max and this is my website for my J-term class *Reproducible Biol
 
 [Assignment 8](Assignment_8.html)
 
+[Assignment 9](Assignment_9.html)
+
 ## Weekly Assignments
 
 [Assignment 1](https://lvash.github.io/BIOL1007A/Weekly-Assignment-1.html)
@@ -55,4 +57,6 @@ Hi! My name is Max and this is my website for my J-term class *Reproducible Biol
 [Day 6](Day_6_notes.html)
 
 [Day 7](Day_7_notes.html)
+
+[Day 8](Day_8_notes.html)
 
