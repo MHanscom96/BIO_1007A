@@ -1,0 +1,32 @@
+---
+title: "Weekly Assignment 4"
+author: "Max Hanscom"
+date: "2023-02-01"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r}
+library(tidyverse)
+library(ggthemes)
+
+ANOmodel <- aov(Sepal.Length ~ factor(Species), data=iris)
+summary(ANOmodel)
+
+iris %>% 
+  group_by(Species) %>% 
+  summarize(avgHydro = mean(Sepal.Length, na.rm=T, N=n()))
+
+### Boxplot
+iris$Species <- factor(iris$Species)
+class(iris$Species)
+
+ANOplot <- ggplot(data=iris, mapping=aes(x=Species, y=Sepal.Length), fill=Species) + 
+  geom_boxplot() + 
+  scale_fill_gradient()
+ANOplot
+
+```
+

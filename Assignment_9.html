@@ -187,13 +187,155 @@ row number x the column number.</p>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>matrixMaker <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a=</span><span class="dv">1</span>, <span class="at">b=</span><span class="dv">1</span>){ </span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span>(a<span class="sc">*</span>b), <span class="at">nrow=</span>a)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#m[i,j] &lt;- i * j</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(m)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">matrixMaker</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    3    5
-## [2,]    2    4    6</code></pre>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(m)){ </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(m)){ </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      m[i,j] <span class="ot">&lt;-</span> i <span class="sc">*</span> j</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    }  </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(m)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">matrixMaker</span>(<span class="dv">8</span>,<span class="dv">8</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]    1    2    3    4    5    6    7    8
+## [2,]    2    4    6    8   10   12   14   16
+## [3,]    3    6    9   12   15   18   21   24
+## [4,]    4    8   12   16   20   24   28   32
+## [5,]    5   10   15   20   25   30   35   40
+## [6,]    6   12   18   24   30   36   42   48
+## [7,]    7   14   21   28   35   42   49   56
+## [8,]    8   16   24   32   40   48   56   64</code></pre>
+<p><strong>3.</strong> Use a for loop to repeat your previous functions
+from Weekly Assignment 2 (which simulate a data frame and extract a
+p-value) 100 times. Store the results in a data frame that has 1 column
+indicating the replicate number and 1 column for the p-values (a total
+of 2 columns and 100 rows).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">mean1=</span><span class="dv">10</span>, <span class="at">sd1=</span><span class="fl">1.5</span>, <span class="at">mean2=</span><span class="dv">45</span>, <span class="at">sd2=</span><span class="dv">2</span>){</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  Type <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;Treatment&quot;</span>), <span class="at">each =</span> <span class="dv">25</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  Value <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="at">mean =</span> mean1, <span class="at">sd =</span> sd1), <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="at">mean =</span> mean2, <span class="at">sd =</span> sd2))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Type, Value)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}  </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>pvalue <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">df=</span><span class="cn">NULL</span>){</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  practice <span class="ot">&lt;-</span> <span class="fu">aov</span>(Value <span class="sc">~</span> Type, <span class="at">data=</span>df)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  Summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(practice)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  p_value <span class="ot">&lt;-</span> Summary[[<span class="dv">1</span>]][[<span class="st">&quot;Pr(&gt;F)&quot;</span>]][<span class="dv">1</span>] <span class="co"># huge indexing moment</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(p_value)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>returnDF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> <span class="dv">100</span>, <span class="at">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(returnDF) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Replicate Number&quot;</span>, <span class="st">&quot;P-Values&quot;</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  entry <span class="ot">&lt;-</span> <span class="fu">pvalue</span>(<span class="fu">test</span>())</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  returnDF[i,<span class="dv">1</span>] <span class="ot">&lt;-</span> i</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  returnDF[i,<span class="dv">2</span>] <span class="ot">&lt;-</span> entry</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(returnDF)</span></code></pre></div>
+<pre><code>##     Replicate Number     P-Values
+## 1                  1 4.138042e-50
+## 2                  2 3.826257e-51
+## 3                  3 2.985911e-53
+## 4                  4 2.421203e-49
+## 5                  5 7.993432e-49
+## 6                  6 1.125219e-50
+## 7                  7 2.640523e-50
+## 8                  8 6.464937e-47
+## 9                  9 2.796106e-50
+## 10                10 3.528666e-51
+## 11                11 1.292723e-49
+## 12                12 4.371900e-49
+## 13                13 5.565062e-50
+## 14                14 1.697123e-51
+## 15                15 2.561197e-49
+## 16                16 1.687975e-46
+## 17                17 2.984789e-53
+## 18                18 3.960300e-48
+## 19                19 1.077262e-47
+## 20                20 9.730721e-49
+## 21                21 9.921305e-49
+## 22                22 2.835895e-54
+## 23                23 5.368076e-48
+## 24                24 4.702005e-50
+## 25                25 8.846889e-48
+## 26                26 1.480338e-52
+## 27                27 1.280743e-47
+## 28                28 6.718686e-52
+## 29                29 3.254777e-52
+## 30                30 6.976309e-52
+## 31                31 4.522617e-58
+## 32                32 1.639856e-50
+## 33                33 5.020939e-54
+## 34                34 5.501215e-54
+## 35                35 1.981709e-48
+## 36                36 1.579726e-49
+## 37                37 1.284860e-50
+## 38                38 1.130569e-50
+## 39                39 9.125167e-55
+## 40                40 1.956339e-52
+## 41                41 7.929900e-49
+## 42                42 5.503430e-46
+## 43                43 5.583139e-52
+## 44                44 1.704953e-48
+## 45                45 4.801215e-50
+## 46                46 9.981252e-53
+## 47                47 5.181496e-50
+## 48                48 1.914894e-51
+## 49                49 2.973581e-51
+## 50                50 6.858917e-51
+## 51                51 5.177145e-51
+## 52                52 9.568770e-48
+## 53                53 1.456926e-47
+## 54                54 3.595957e-48
+## 55                55 1.674265e-49
+## 56                56 3.184290e-47
+## 57                57 1.727941e-49
+## 58                58 2.159664e-50
+## 59                59 7.388466e-51
+## 60                60 1.562891e-48
+## 61                61 4.830145e-51
+## 62                62 1.500508e-47
+## 63                63 1.017450e-50
+## 64                64 7.631648e-52
+## 65                65 6.525831e-50
+## 66                66 3.755302e-54
+## 67                67 2.119118e-50
+## 68                68 5.518304e-47
+## 69                69 2.988915e-51
+## 70                70 2.191009e-53
+## 71                71 1.169998e-50
+## 72                72 5.056104e-50
+## 73                73 2.001640e-50
+## 74                74 2.987940e-49
+## 75                75 3.651878e-50
+## 76                76 6.691981e-46
+## 77                77 3.973873e-50
+## 78                78 4.244691e-49
+## 79                79 9.905576e-52
+## 80                80 3.919835e-52
+## 81                81 4.336869e-49
+## 82                82 1.507507e-48
+## 83                83 4.876328e-49
+## 84                84 3.206837e-51
+## 85                85 3.032039e-49
+## 86                86 1.120415e-49
+## 87                87 7.023941e-48
+## 88                88 2.792503e-49
+## 89                89 2.037416e-47
+## 90                90 1.669951e-50
+## 91                91 1.634612e-48
+## 92                92 3.279533e-51
+## 93                93 1.532380e-49
+## 94                94 5.693573e-49
+## 95                95 5.924800e-48
+## 96                96 1.206195e-48
+## 97                97 1.649258e-51
+## 98                98 1.483561e-49
+## 99                99 2.843714e-46
+## 100              100 8.288068e-51</code></pre>
     </section>
   </div>
 </div>

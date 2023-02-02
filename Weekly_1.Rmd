@@ -1,0 +1,103 @@
+---
+title: "Weekly Assignment 1"
+author: "Max Hanscom"
+date: "2023-01-31"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+# Setting up a Github Webpage in R studio
+## For Mac IOS users
+
+### **1.** Downloading R
+
+1. Go to the R website at https://cran.r-project.org/
+2. Select the version of R appropriate for your operating system
+3. Download and install!
+
+### **2.** Downloading R Studio
+
+1. Go to the Posit website at https://posit.co/
+2. Select "Download R studio" in the top right hand corner
+3. Select "Download R studio" again, now in the middle of the screen
+4. Download and install!
+
+### **3.** Installing Git
+
+1. You will need to install "Homebrew"
+2. Navigate to their website https://brew.sh/
+3. Copy the following code
+
+```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"``` 
+
+from the website.
+
+4. Open the terminal on your computer, paste the code, and press enter
+5. You should be prompted to type your computer password.  Note that it win't show up while you type, so just type it in and press enter
+6. Follow the instructions to finish installing Homebrew
+7. Type and run ```brew install git``` in terminal
+8. Restart R studio
+
+### **4.** Setting up github
+
+1. Go to https://github.com/ and create an account!
+2. Time to create a personal access token to link github to R studio
+3. Click your profile picture at the very top right of the page
+4. Click on settings
+5. Scroll all the way down and select ```Developer Settings``` on the left side of the screen
+6. Under ```Personal access tokens``` on the lft side of the screen, select ```Tokens (classic)```
+7. Click ```Generate New Token``` and choose Classic as the type
+8. Enter a name for your token
+9. Check to ```Repo``` setting box
+10. scroll to the bottom and select ```Generate Token```
+11. **Copy the token number and save it somewhere safe!** you will not be able to see it again
+
+### **5.** Setting up a repository
+
+1. Navigate to the github home page
+2. Select the green ```New``` button on the left side of the screen
+3. Name your repository
+4. Select the option to include a ReadMe statement
+5. Add an MIT license so people can't mess with your stuff
+6. Select ```Create Repository```
+
+### **6.** Accessing the repository in R Studio
+
+1. Open R studio
+2. Go to the menu in the top corner and select ```New Project```
+3. Select ```Version Control``` and then ```Git```
+4. Go to github online and open your new repository
+5. Click on the green ```<> Code``` button and copy the URL
+6. Go back to R Studio and paste the URL
+7. Give the project the exact name it has on github
+8. Browse to save it somewhere, and select ```Create Project```
+9. Go back to github and go to your repository
+10. Go to ```Settings``` and on the left side go to ```Pages```
+11. Scroll down and change the branch from ```none``` to ```main```
+
+### **7.** Working in R Studio and upodating website
+
+1. In R studio, create a new R Markdown by going to the dropdown menu in the top left with the green plus
+2. Save the new file as ```index```
+3. Knit index to html by clicking the yarn icon
+4. Play around with the page and code whatever you want!
+5. After you're satified with your html document, you can upload the changes to your website
+6. Go to the terminal and type in ```git status``` to check the status of your files
+7. Type in ```git add -A``` to add any changes
+8. Type in ```git commit -am "your message"``` to add a label to the save
+9. Type in ```git push``` to send the changes to your website
+10. Wait a couple of minutes for the website to update!
+
+
+
+
+
+
+
+
+
+
+
+

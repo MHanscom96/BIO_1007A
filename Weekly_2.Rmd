@@ -9,39 +9,52 @@ output:
 ---
 **1.**
 ```{r}
+#####################################################
+# FUNCTION: test
+# input: Control mean, sd and Treatment mean, sd
+
 set.seed(111)
-simulation <- function(mean1=10, sd1=1.5, mean2=45, sd2=2, n=25){
+test <- function(mean1=10, sd1=1.5, mean2=45, sd2=2){
   
-  Type <- rep(c("Control", "Treatment"), each = n)
-  Value <- c(rnorm(n, mean = mean1, sd = sd1), rnorm(n, mean = mean2, sd = sd2))
-  dframe <- data.frame(Type, Value)
-  return(dframe)
+  Type <- rep(c("Control", "Treatment"), each = 25)
+  Value <- c(rnorm(25, mean = mean1, sd = sd1), rnorm(25, mean = mean2, sd = sd2))
+  df <- data.frame(Type, Value)
+  return(df)
 }
 ```
 
 **2.**
 ```{r}
 
-data<-simulation()
+data<-test()
 
 head(data)
 
 ```
-
 **3.**
 ```{r}
+aov(Value ~ Type, data = test())
 
-myPval <- function(df=NULL){
+```
+
+
+
+**4.**
+```{r}
+#####################################################
+# FUNCTION: pvalue
+# input: data frame
+# output: p value of ANOVA summary table for data frame
+
+pvalue <- function(df=NULL){
   
-  test <- aov(Value ~ Type, data=df)
-  testSummary <- summary(test)
-  p_value <- testSummary[[1]][["Pr(>F)"]][1]
+  practice <- aov(Value ~ Type, data=df)
+  Summary <- summary(practice)
+  p_value <- Summary[[1]][["Pr(>F)"]][1] # huge indexing moment
   return(p_value)
 }
 
-myPval(df=data)
-
-myPval(simulation())
+pvalue(test())
 ```
 
 

@@ -36,11 +36,13 @@ Hi! My name is Max and this is my website for my J-term class *Reproducible Biol
 
 ## Weekly Assignments
 
-[Assignment 1](https://lvash.github.io/BIOL1007A/Weekly-Assignment-1.html)
+[Assignment 1](Weekly_1.html)
 
 [Assignment 2](Weekly_2.html)
 
 [Assignment 3](Weekly_3.html)
+
+[Assignment 4](Weekly_4.html)
 
 ## Lecture Notes
 

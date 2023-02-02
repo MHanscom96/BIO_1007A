@@ -31,6 +31,97 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+
+a.sourceLine {
+pointer-events: auto;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -69,7 +160,130 @@ code span.ot { color: #007020; }
 <div id="content-wrapper">
   <div class="inner clearfix">
     <section id="main-content">
-
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.4.0      ✔ purrr   1.0.1 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.1      ✔ stringr 1.5.0 
+## ✔ readr   2.1.3      ✔ forcats 0.5.2 
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rockData <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file=</span><span class="st">&quot;Data/rock-data.csv&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(rockData)</span></code></pre></div>
+<pre><code>## Rows: 180
+## Columns: 47
+## $ SampleID        &lt;chr&gt; &quot;MT01_01&quot;, &quot;MT01_02&quot;, &quot;MT01_03&quot;, &quot;MT01_04&quot;, &quot;MT01_05&quot;,…
+## $ elevation       &lt;int&gt; 1397, 1397, 1397, 1397, 1397, 1397, 1397, 1397, 1397, …
+## $ latitude        &lt;dbl&gt; 29.58067, 29.58067, 29.58067, 29.58067, 29.58067, 29.5…
+## $ longitude       &lt;dbl&gt; 95.46352, 95.46352, 95.46352, 95.46352, 95.46352, 95.4…
+## $ veg.types.short &lt;chr&gt; &quot;EBF&quot;, &quot;EBF&quot;, &quot;EBF&quot;, &quot;EBF&quot;, &quot;EBF&quot;, &quot;EBF&quot;, &quot;EBF&quot;, &quot;EBF&quot;…
+## $ veg.types.long  &lt;chr&gt; &quot;evergreen broadleaved forest &quot;, &quot;evergreen broadleave…
+## $ Temp            &lt;dbl&gt; 0.9832526, 0.9832526, 0.9832526, 0.9832526, 0.9832526,…
+## $ Precip          &lt;dbl&gt; 0.8433322, 0.8433322, 0.8433322, 0.8433322, 0.8433322,…
+## $ Quartz          &lt;dbl&gt; 2.10441142, -0.01610978, -0.93019854, -0.13654715, 1.9…
+## $ Plagioclase     &lt;dbl&gt; -0.28504662, -0.04097284, 2.20858932, 0.12700189, -2.1…
+## $ K.feldspar      &lt;dbl&gt; -0.04482258, 1.21688335, 0.22021628, 1.51618579, 1.199…
+## $ Amphibole       &lt;dbl&gt; -0.56312976, -0.25720206, -0.44117209, -0.56312976, -0…
+## $ Muscovite       &lt;dbl&gt; -0.70452520, -0.63447340, -1.05093517, -0.78458439, 0.…
+## $ Chlorite        &lt;dbl&gt; -0.55903381, -0.22034842, -0.12958959, -0.24027109, -0…
+## $ Mineral.pc1     &lt;dbl&gt; -1.0598724, -0.5204789, 0.6967493, -0.6932264, -2.1377…
+## $ Mineral.pc2     &lt;dbl&gt; 1.28686460, 0.55503307, 1.76932148, 0.78198127, -0.311…
+## $ Ca              &lt;dbl&gt; -0.86368953, -1.01523941, -0.90230097, -1.01910056, -1…
+## $ Fe              &lt;dbl&gt; -0.60531427, -0.67839323, -0.49984805, -0.35867280, -0…
+## $ Mg              &lt;dbl&gt; -0.58263519, -0.67574685, -0.55329864, -0.55457415, -0…
+## $ Al              &lt;dbl&gt; -1.383646044, -1.381051235, -0.441730252, -0.828356844…
+## $ K               &lt;dbl&gt; -0.51448071, -0.38842607, 0.21760587, -0.04581601, -0.…
+## $ Na              &lt;dbl&gt; -1.11313010, -1.16873658, -0.50675458, -0.88276036, -1…
+## $ Ba              &lt;dbl&gt; -0.58215596, -0.42253970, -0.26292345, -0.42253970, -0…
+## $ Mn              &lt;dbl&gt; -0.517499274, -0.702835265, -0.332163282, -0.814036860…
+## $ Ti              &lt;dbl&gt; -0.99611317, -0.98867085, -0.83238213, -0.58678558, -0…
+## $ CIA             &lt;dbl&gt; 0.97083729, 1.22233711, 1.04538154, 1.30645972, 1.4314…
+## $ Mg.Al           &lt;dbl&gt; -0.4547251459, -0.5758431636, -0.5223818274, -0.484519…
+## $ Ca.Al           &lt;dbl&gt; -0.68037419, -0.88113575, -0.90532016, -0.98177196, -1…
+## $ Ti.Fe           &lt;dbl&gt; -0.5234350, -0.3902376, -0.4653726, -0.3646991, -0.361…
+## $ Ti.Al           &lt;dbl&gt; -0.69171248, -0.68236370, -0.81228069, -0.36259402, 0.…
+## $ Metal.pc1       &lt;dbl&gt; 0.68638569, 1.01192796, 1.04994803, 0.83516394, 0.3551…
+## $ Metal.pc2       &lt;dbl&gt; 0.56490871, 0.66561315, 0.46952971, 0.86236986, 0.8725…
+## $ pH              &lt;dbl&gt; -0.3177179, -0.4030208, -0.5523010, -0.8135412, -1.069…
+## $ Moisture        &lt;dbl&gt; -0.16694166, -0.04449147, -0.36252377, -0.35463284, -0…
+## $ TOC             &lt;dbl&gt; -0.46120139, -0.41702031, 0.15733374, 0.59914455, -1.2…
+## $ TN              &lt;dbl&gt; 0.807073200, 0.833399403, 0.145265896, 0.373414182, 0.…
+## $ TP              &lt;dbl&gt; -0.13022254, -0.15053124, -0.29787219, -0.28073023, -0…
+## $ NH4.N           &lt;dbl&gt; 3.48385632, 3.37215319, 2.13741327, 4.17209170, 2.4136…
+## $ NO3.N           &lt;dbl&gt; -0.11738506, -0.23760026, -0.58039214, -0.60181663, -0…
+## $ WSOC            &lt;dbl&gt; -0.10803271, 1.16447124, 0.37052265, 1.49830778, 1.055…
+## $ WSON            &lt;dbl&gt; 0.02444649, 1.37027681, 0.31195414, 1.09440929, 0.7801…
+## $ Veg.rich        &lt;dbl&gt; 2.10862426, 0.30368773, -0.46985649, 0.04583966, -0.21…
+## $ Veg.dca1        &lt;dbl&gt; -1.812725, -2.036083, -1.904667, -2.178964, -1.819466,…
+## $ Veg.dca2        &lt;dbl&gt; 1.12335148, 1.28990536, 1.19153471, 1.55661093, 1.2903…
+## $ Bac.rich        &lt;dbl&gt; -0.10679799, -0.48149297, -0.67870086, -0.79456049, -0…
+## $ Bac.dca1        &lt;dbl&gt; -0.01279832, -0.19911083, -0.59368251, -0.61785187, -0…
+## $ Bac.dca2        &lt;dbl&gt; -0.44570614, -0.61871992, -0.82621467, -0.89247086, -0…</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rockData)</span></code></pre></div>
+<pre><code>##   SampleID elevation latitude longitude veg.types.short
+## 1  MT01_01      1397 29.58067  95.46352             EBF
+## 2  MT01_02      1397 29.58067  95.46352             EBF
+## 3  MT01_03      1397 29.58067  95.46352             EBF
+## 4  MT01_04      1397 29.58067  95.46352             EBF
+## 5  MT01_05      1397 29.58067  95.46352             EBF
+## 6  MT01_06      1397 29.58067  95.46352             EBF
+##                  veg.types.long      Temp    Precip      Quartz Plagioclase
+## 1 evergreen broadleaved forest  0.9832526 0.8433322  2.10441142 -0.28504662
+## 2 evergreen broadleaved forest  0.9832526 0.8433322 -0.01610978 -0.04097284
+## 3 evergreen broadleaved forest  0.9832526 0.8433322 -0.93019854  2.20858932
+## 4 evergreen broadleaved forest  0.9832526 0.8433322 -0.13654715  0.12700189
+## 5 evergreen broadleaved forest  0.9832526 0.8433322  1.94588702 -2.18752287
+## 6 evergreen broadleaved forest  0.9832526 0.8433322 -0.82931937 -0.11707189
+##    K.feldspar  Amphibole   Muscovite    Chlorite Mineral.pc1 Mineral.pc2
+## 1 -0.04482258 -0.5631298 -0.70452520 -0.55903381  -1.0598724   1.2868646
+## 2  1.21688335 -0.2572021 -0.63447340 -0.22034842  -0.5204789   0.5550331
+## 3  0.22021628 -0.4411721 -1.05093517 -0.12958959   0.6967493   1.7693215
+## 4  1.51618579 -0.5631298 -0.78458439 -0.24027109  -0.6932264   0.7819813
+## 5  1.19975156 -0.5631298  0.04064116 -0.55903381  -2.1377348  -0.3112157
+## 6  1.89510067 -0.3006107 -0.64371100  0.03643266  -0.4305149   0.2091631
+##           Ca         Fe         Mg         Al           K         Na         Ba
+## 1 -0.8636895 -0.6053143 -0.5826352 -1.3836460 -0.51448071 -1.1131301 -0.5821560
+## 2 -1.0152394 -0.6783932 -0.6757468 -1.3810512 -0.38842607 -1.1687366 -0.4225397
+## 3 -0.9023010 -0.4998481 -0.5532986 -0.4417303  0.21760587 -0.5067546 -0.2629234
+## 4 -1.0191006 -0.3586728 -0.5545741 -0.8283568 -0.04581601 -0.8827604 -0.4225397
+## 5 -1.1030804 -0.2183280 -0.4525340 -1.1981172 -0.07167338 -1.2905413 -0.7417722
+## 6 -1.0065518 -0.4118211 -0.5839107 -0.5909318 -0.13954895 -0.8536331 -0.4225397
+##           Mn         Ti       CIA      Mg.Al      Ca.Al      Ti.Fe       Ti.Al
+## 1 -0.5174993 -0.9961132 0.9708373 -0.4547251 -0.6803742 -0.5234350 -0.69171248
+## 2 -0.7028353 -0.9886708 1.2223371 -0.5758432 -0.8811358 -0.3902376 -0.68236370
+## 3 -0.3321633 -0.8323821 1.0453815 -0.5223818 -0.9053202 -0.4653726 -0.81228069
+## 4 -0.8140369 -0.5867856 1.3064597 -0.4845198 -0.9817720 -0.3646991 -0.36259402
+## 5 -0.7769697 -0.4156122 1.4314815 -0.3128556 -1.0271711 -0.3619496  0.02559467
+## 6 -0.7769697 -0.7654013 1.5007417 -0.5431106 -1.0040813 -0.5100756 -0.67875404
+##   Metal.pc1 Metal.pc2         pH    Moisture        TOC        TN         TP
+## 1 0.6863857 0.5649087 -0.3177179 -0.16694166 -0.4612014 0.8070732 -0.1302225
+## 2 1.0119280 0.6656132 -0.4030208 -0.04449147 -0.4170203 0.8333994 -0.1505312
+## 3 1.0499480 0.4695297 -0.5523010 -0.36252377  0.1573337 0.1452659 -0.2978722
+## 4 0.8351639 0.8623699 -0.8135412 -0.35463284  0.5991445 0.3734142 -0.2807302
+## 5 0.3551132 0.8725372 -1.0694501 -0.36816014 -1.2122798 0.5866176 -0.2581982
+## 6 0.8942253 1.0533761 -0.7015811 -0.34857374 -0.7704690 0.1901543 -0.2961871
+##      NH4.N      NO3.N       WSOC       WSON    Veg.rich  Veg.dca1 Veg.dca2
+## 1 3.483856 -0.1173851 -0.1080327 0.02444649  2.10862426 -1.812725 1.123351
+## 2 3.372153 -0.2376003  1.1644712 1.37027681  0.30368773 -2.036083 1.289905
+## 3 2.137413 -0.5803921  0.3705227 0.31195414 -0.46985649 -1.904667 1.191535
+## 4 4.172092 -0.6018166  1.4983078 1.09440929  0.04583966 -2.178964 1.556611
+## 5 2.413668 -0.6030069  1.0558064 0.78018220 -0.21200842 -1.819466 1.290351
+## 6 2.241910 -0.5268309  0.2576742 0.19580701  0.56153581 -2.065861 1.415350
+##     Bac.rich    Bac.dca1   Bac.dca2
+## 1 -0.1067980 -0.01279832 -0.4457061
+## 2 -0.4814930 -0.19911083 -0.6187199
+## 3 -0.6787009 -0.59368251 -0.8262147
+## 4 -0.7945605 -0.61785187 -0.8924709
+## 5 -0.8808389 -0.63646496 -0.9413166
+## 6 -0.4026098 -0.50434204 -0.7586652</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(rockData<span class="sc">$</span>veg.types.short) <span class="do">### allows you to see different groups of character column</span></span></code></pre></div>
+<pre><code>## 
+##  EBF  FCF  FSM SEBF  TCF  TRF 
+##   40   40   10   30   30   30</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rockData<span class="sc">$</span>veg.types.short) <span class="co"># quick data summary</span></span></code></pre></div>
+<pre><code>##    Length     Class      Mode 
+##       180 character character</code></pre>
     </section>
   </div>
 </div>

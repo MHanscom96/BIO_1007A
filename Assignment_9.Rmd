@@ -47,8 +47,31 @@ matrixMaker(8,8)
 Use a for loop to repeat your previous functions from Weekly Assignment 2 (which simulate a data frame and extract a p-value) 100 times. Store the results in a data frame that has 1 column indicating the replicate number and 1 column for the p-values (a total of 2 columns and 100 rows).
 ```{r}
 
+test <- function(mean1=10, sd1=1.5, mean2=45, sd2=2){
+  
+  Type <- rep(c("Control", "Treatment"), each = 25)
+  Value <- c(rnorm(25, mean = mean1, sd = sd1), rnorm(25, mean = mean2, sd = sd2))
+  df <- data.frame(Type, Value)
+  return(df)
+}  
+  
+pvalue <- function(df=NULL){
+  
+  practice <- aov(Value ~ Type, data=df)
+  Summary <- summary(practice)
+  p_value <- Summary[[1]][["Pr(>F)"]][1] # huge indexing moment
+  return(p_value)
+}
 
+returnDF <- data.frame(matrix(NA, nrow = 100, ncol = 2))
+colnames(returnDF) <- c("Replicate Number", "P-Values")
 
+for (i in 1:100){
+  entry <- pvalue(test())
+  returnDF[i,1] <- i
+  returnDF[i,2] <- entry
+}
 
+print(returnDF)
 ```
 
