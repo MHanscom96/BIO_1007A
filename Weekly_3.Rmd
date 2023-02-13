@@ -8,39 +8,29 @@ output:
     highlight: github
 ---
 
+I couldn't find a good figure so i downloaded a dataset and made this meaningless graph
+
 ```{r messasge=FALSE}
 library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
 
 rockData <- read.table(file="Data/rock-data.csv", header=TRUE, sep=",")
-glimpse(rockData)
-head(rockData)
 
+rockData <- rockData %>% 
+  group_by(veg.types.short) %>% 
+  summarize(meanPrecip=mean(Precip, na.rm = TRUE), TotalNumber=n())
+summary(rockData)
 
-rockData$species<-factor(rockData$veg.types.short, labels=c("Rock Type")) #creating 'labels' to use for the plot
-
-class(rockData$treatment)
-
-rockData$treatment <- factor(rockData$treatment, 
-                              levels=c("Reference",
-                                       "100m", "30m"))
-
-
-p<- ggplot(data=rockData, 
-           aes(x=interaction(wetland, treatment),  #group treatment and wetland
-               y=count.total.adults, fill=factor(year))) + geom_bar(position="dodge", stat="identity", color="black") +
-  ylab("Number of breeding adults") +
-  xlab("") +
-  scale_y_continuous(breaks = c(0,100,200,300,400,500)) + ## y axis should be broken up by 100s
-  scale_x_discrete(labels=c("30 (Ref)", "124 (Ref)", "141 (Ref)", "25 (100m)","39 (100m)","55 (100m)","129 (100m)", "7 (30m)","19 (30m)","20 (30m)","59 (30m)")) +
-  facet_wrap(~species, nrow=2, strip.position="right") +
-  theme_few() + scale_fill_grey() + 
-  theme(panel.background = element_rect(fill = 'gray94', color = 'black'), legend.position="top",  legend.title= element_blank(), axis.title.y = element_text(size=12, face="bold", colour = "black"), strip.text.y = element_text(size = 10, face="bold", colour = "black")) + 
-  guides(fill=guide_legend(nrow=1,byrow=TRUE)) 
-
+p <- ggplot(data = rockData, mapping =aes(x= veg.types.short, y = meanPrecip)) +
+  geom_bar(stat = 'identity', fill=I(c("forestgreen", "slategrey", "goldenrod","lightblue", "pink", "lightyellow"))) + 
+  theme_classic(base_size=15, base_family="sans") + 
+  xlab("Vegetation Types") + 
+  ylab("Mean Precipitation") + 
+  labs(title="Relationship between Precipitation and vegitation", subtitle="adapted from Donaldson et al, 2013")
 p
-
-
-
 
 ```
 

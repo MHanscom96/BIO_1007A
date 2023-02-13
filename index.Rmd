@@ -34,6 +34,8 @@ Hi! My name is Max and this is my website for my J-term class *Reproducible Biol
 
 [Assignment 9](Assignment_9.html)
 
+[Final Project](Final_Project.html)
+
 ## Weekly Assignments
 
 [Assignment 1](Weekly_1.html)

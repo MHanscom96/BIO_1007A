@@ -1,0 +1,22 @@
+---
+title: "Final Project"
+author: "Max Hanscom"
+date: "2023-02-02"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+# [Middlebury Pranksters Website](https://mhanscom96.github.io/Pranksters/home)
+
+For my final project I created a website for my team, the ultimate frisbee team here at the college, the Middlebury Pranksters.  This team is probably what I have spent the most time on over the last four years, and is something I am very passionate about, so I decided to use my new website building skills to try and make something we as a team can use.
+
+To accomplish my goal, I followed the tutorial on the class homepage to set up a Jekkel website, which took some trial and error to find a compatible one, and one that I liked.  I then went into the sample code and looked through each document to try and understand the connections between them.  It took a while to see how posts and pages interact, as well as the differences between md and Rmd files.  Eventually, I changed the section titles from the sample code to my own (Roster, Schedule, Highlights, etc), and had to find all of the places where links connected things and change those as well, which took some trial and error.  Then I began to make my own posts, and linking them to the pages. Formatting of course took a lot of time.  Finally I tinkered with the base settings to get the colors I wanted, and added in the twitter and instagram icons that link to our team accounts.
+
+It all took a lot of back and forth between R studio and github, but this project has been really informative and fun.  I am proud to have created something that I and others will use going forward, and I fully intend to continue to fill out the website with past data, as well as continue to update it as things change and are added going forward! Click the link above to explore, and if you're interested in ultimate, don't hesitate to reach out!
+
+Also watch the highlight videos they're sick
+
+
+
